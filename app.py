@@ -29,12 +29,14 @@ from matcher import auto_pick, suggest
 from review import build_review
 from updater import (NEW, Assignment, UpdateError, apply, check_against_master, find_repairs,
                      plan_changes)
+from auth import require_login
 
 XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 NEW_LABEL = "➕ Add as a new licensee row"
 
 st.set_page_config(page_title=f"SEGA {YEAR} forecast consolidator", page_icon="📊",
                    layout="wide")
+require_login()   # @segaamerica.com email + SES one-time code; stops here until signed in
 
 
 # ------------------------------------------------------------------ caching --
